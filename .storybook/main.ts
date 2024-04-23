@@ -1,24 +1,28 @@
 const config = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: [
+    '../src/app/components/**/*.mdx',
+    '../src/app/components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+  ],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    '@storybook/addon-a11y'
   ],
   framework: {
-    name: "@storybook/angular",
+    name: '@storybook/angular',
     options: {},
   },
-  "core": {
-    "builder": {
-      "name": "@storybook/builder-vite",
-      "options": {
-        viteConfigPath: "vite.storybook.config.ts"
-      }
-    }
-  },  
+  core: {
+    builder: {
+      name: '@storybook/builder-vite',
+      options: {
+        viteConfigPath: 'vite.storybook.config.ts',
+      },
+    },
+  },
   docs: {
-    autodocs: "tag",
+    autodocs: 'tag',
   },
 };
 export default config;
