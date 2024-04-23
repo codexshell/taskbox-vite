@@ -9,7 +9,7 @@
     "test": "ng test",
     "storybook": "npm run compodoc:build && npm run storybook:dev",
     "compodoc:build": "compodoc -p ./.storybook/tsconfig.doc.json -e json -d ./",
-    "storybook:dev": "storybook dev",
+    "storybook:dev": "storybook dev -p 6006 --no-open",
     "storybook:build": "storybook build"
   },
   "private": true,
