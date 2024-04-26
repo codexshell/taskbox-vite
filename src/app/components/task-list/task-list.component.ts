@@ -1,41 +1,37 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import type { OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Store } from '@ngxs/store';
 
-import type { ITask } from '../../models/task.model';
-import { TaskComponent } from '../task/task.component';
+import * as TaskActions from '../../state/task.actions';
+import { TaskListPureComponent } from '../task-list-pure/task-list-pure.component';
+import { TaskState } from '../../state/task.state';
+import type { TaskModel } from '../../models/task.model';
+import type { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [TaskComponent],
+  imports: [CommonModule, TaskListPureComponent],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css',
 })
 export class TaskListComponent {
-  /**
-   * @ignore
-   * Component property to define ordering of tasks
-   * */
-  tasksInOrder: ITask[] = [];
-
-  /** Checks if it is in loading state */
-  @Input() loading = false;
+  private store = inject(Store);
+  // Task slice from the global store
+  tasks$: Observable<TaskModel[]> = this.store.select(TaskState.getAllTasks);
 
   /**
-   * Event to change the task to pinned
+   *  Component method to trigger the archiveTask event.
    * */
-  @Output() onPinTask = new EventEmitter<Event>();
+  archiveTask(id: string) {
+    this.store.dispatch(new TaskActions.ArchiveTask(id));
+  }
 
   /**
-   * Event to change the task to archived
+   * Component action to trigger the pinTask event.
    * */
-  @Output() onArchiveTask = new EventEmitter<Event>();
-
-  /** The list of tasks */
-  @Input() set tasks(arr: ITask[]) {
-    const pinnedTasks = arr.filter((task) => task.state === 'TASK_PINNED');
-    const filteredTasks = arr.filter(
-      (task) => task.state !== 'TASK_ARCHIVED' && task.state !== 'TASK_PINNED'
-    );
-    this.tasksInOrder = [...pinnedTasks, ...filteredTasks];
+  pinTask(id: string) {
+    this.store.dispatch(new TaskActions.PinTask(id));
   }
 }

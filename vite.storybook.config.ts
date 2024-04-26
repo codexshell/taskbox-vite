@@ -18,12 +18,15 @@ export default defineConfig(({ mode }) => ({
       name: '@storybook/angular',
       transform(code) {
         if (code.includes('"@storybook/angular"')) {
-          return code.replace(/\"@storybook\/angular\"/g, '\"@storybook/angular/dist/client\"');
+          return code.replace(
+            /\"@storybook\/angular\"/g,
+            '"@storybook/angular/dist/client"'
+          );
         }
 
         return;
-      }
-    }
+      },
+    },
   ],
   test: {
     globals: true,
@@ -33,6 +36,6 @@ export default defineConfig(({ mode }) => ({
   },
   define: {
     'import.meta.vitest': mode !== 'production',
-    'process.env.FORCE_SIMILAR_INSTEAD_OF_MAP': 'false'
+    'process.env.FORCE_SIMILAR_INSTEAD_OF_MAP': 'false',
   },
 }));

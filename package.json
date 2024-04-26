@@ -9,8 +9,9 @@
     "test": "ng test",
     "storybook": "npm run compodoc:build && npm run storybook:dev",
     "compodoc:build": "compodoc -p ./.storybook/tsconfig.doc.json -e json -d ./",
-    "storybook:dev": "storybook dev -p 6006 --no-open",
-    "storybook:build": "storybook build"
+    "storybook:dev": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
+    "storybook:test": "test-storybook"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +23,9 @@
     "@angular/platform-browser": "^17.2.0",
     "@angular/platform-browser-dynamic": "^17.2.0",
     "@angular/router": "^17.2.0",
+    "@ngxs/devtools-plugin": "3.8.2",
+    "@ngxs/logger-plugin": "3.8.2",
+    "@ngxs/store": "^3.8.2-dev.master-7dc0237",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
@@ -41,6 +45,7 @@
     "@storybook/blocks": "^7.6.17",
     "@storybook/builder-vite": "^7.6.17",
     "@storybook/test": "^7.6.17",
+    "@storybook/test-runner": "^0.17.0",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
@@ -55,6 +60,5 @@
   },
   "optionalDependencies": {
     "@angular/language-service": "^17.2.0"
-  },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  }
 }

@@ -11,7 +11,7 @@
       name="checked-{{ task?.id }}"
       id="checked-{{ task?.id }}"
     />
-    <span class="checkbox-custom" (click)="onArchive(task?.id)"></span>
+    <span class="checkbox-custom" (click)="onArchive(task!.id!)"></span>
   </label>
   <label
     [attr.aria-label]="task?.title + ''"
@@ -31,7 +31,7 @@
   <button
     class="pin-button"
     [attr.aria-label]="'pinTask-' + task?.id"
-    (click)="onPin(task?.id)"
+    (click)="onPin(task!.id!)"
   >
     <span class="icon-star"></span>
   </button>
