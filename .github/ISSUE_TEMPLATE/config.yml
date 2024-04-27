@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Feature requests 💡
+    url: https://github.com/codexshell/taskbox-vite/discussions/new?category=ideas
+    about: Suggest a feature idea for this project.
+  - name: Open an RFC 🦄
+    url: https://github.com/codexshell/taskbox-vite/discussions/new?category=rfc
+    about: Do you want to propose a more involved change to Storybook? Open an RFC (Request for Comments) to start a discussion.
+  - name: Questions 💭
+    url: https://github.com/codexshell/taskbox-vite/discussions/new?category=help
+    about: Need support with a Storybook problem? Open up a help request.
+  - name: Discussions 🙌
+    url: https://github.com/codexshell/taskbox-vite/discussions
+    about: Show off your Storybook or discuss the project.
