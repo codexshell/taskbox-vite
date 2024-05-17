@@ -1,0 +1,56 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+  "name": "Node.js",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "installOhMyZshConfig": true,
+      "upgradePackages": true,
+      "username": "automatic",
+      "userUid": "automatic",
+      "userGid": "automatic"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "installDirectlyFromGitHubRelease": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers-contrib/features/angular-cli:2": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
+      "plugins": "gh git-escape-magic zsh-autosuggestions zsh-syntax-highlighting",
+      "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions https://github.com/zsh-users/zsh-syntax-highlighting.git",
+      "username": "node"
+    },
+    "ghcr.io/duduribeiro/devcontainer-features/neovim:1": {
+      "version": "stable"
+    }
+  },
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "git config --global core.editor 'nvim' && npm install",
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Angular.ng-template",
+        "tomwhite007.rename-angular-component",
+        "ms-vscode.vscode-typescript-next",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "christian-kohler.npm-intellisense",
+        "eamodio.gitlens"
+      ]
+    }
+  }
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
+}
